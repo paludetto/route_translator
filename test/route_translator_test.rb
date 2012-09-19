@@ -402,6 +402,8 @@ class TranslateRoutesTest < ActionController::TestCase
 
     @routes = app.routes
 
+    print_routes
+
     assert_routing '/', :controller => 'people', :action => 'index', :locale => 'es'
     assert_routing '/en', :controller => 'people', :action => 'index', :locale => 'en'
     assert_unrecognized_route '/es', :controller => 'people', :action => 'index', :locale => 'es'

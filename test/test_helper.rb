@@ -61,13 +61,17 @@ module RouteTranslator
       File.open("#{app_path}/#{path}", 'w') do |f|
         f.puts contents
       end
+      File.open("#{app_path}/#{path}", 'r') do |f|
+        puts f.read
+      end
     end
 
     def routes_config
       @@routes_config ||= File.join("config", "routes.rb")
     end
 
-    def print_routes (route_set)
+    def print_routes (route_set = nil)
+      route_set ||= app.routes
       inspector = Rails::Application::RouteInspector.new
       puts inspector.format(route_set.routes, ENV['CONTROLLER']).join "\n"
     end
