@@ -1,5 +1,3 @@
-require 'rails/application/route_inspector'
-
 class StubbedI18nBackend
   @@translations = {
     'es' => { 'people' => 'gente'},
@@ -65,11 +63,6 @@ module RouteTranslator
 
     def routes_config
       @@routes_config ||= File.join("config", "routes.rb")
-    end
-
-    def print_routes (route_set)
-      inspector = Rails::Application::RouteInspector.new
-      puts inspector.format(route_set.routes, ENV['CONTROLLER']).join "\n"
     end
 
     def assert_helpers_include(*helpers)
